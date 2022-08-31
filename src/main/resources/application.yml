@@ -20,9 +20,9 @@ spring:
   #      max-request-size: 20MB
 
   datasource:
-    password: ghkd0045
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
+    username:
     url: jdbc:mysql://localhost:3306/gsdb?serverTimezone=Asia/Seoul
 
 #use when we need to use sessions for login
