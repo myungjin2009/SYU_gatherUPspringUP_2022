@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: local
+
+  jpa:
+    generate-ddl: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        default_batch_fetch_size: '100'
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create
+
+  #use when we need to upload files from user
+  #  servlet:
+  #    multipart:
+  #      max-file-size: 5MB
+  #      max-request-size: 20MB
+
+  datasource:
+    password: ghkd0045
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/gsdb?serverTimezone=Asia/Seoul
+
+#use when we need to use sessions for login
+server:
+  servlet:
+    session:
+      cookie:
+        max-age: 30m
+      #timeout: 10s
+      #tracking-modes: cookie
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate: ERROR
