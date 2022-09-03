@@ -1,4 +1,4 @@
-package syu.gs_up.web.dto;
+package syu.gs_up.web.dto.building;
 
 import lombok.Data;
 

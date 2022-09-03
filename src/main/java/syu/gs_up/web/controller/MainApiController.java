@@ -5,9 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import syu.gs_up.web.controller.response.BuildingResponse;
-import syu.gs_up.web.dto.BuildingDto;
-import syu.gs_up.web.service.BuildingService;
+import syu.gs_up.web.controller.building.response.BuildingResponse;
+import syu.gs_up.web.dto.building.BuildingDto;
+import syu.gs_up.web.service.building.BuildingService;
 
 import java.util.List;
 

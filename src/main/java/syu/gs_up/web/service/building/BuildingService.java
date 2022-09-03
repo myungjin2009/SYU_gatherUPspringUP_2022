@@ -1,9 +1,9 @@
-package syu.gs_up.web.service;
+package syu.gs_up.web.service.building;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import syu.gs_up.web.domain.college.Building;
-import syu.gs_up.web.dto.BuildingDto;
+import syu.gs_up.web.dto.building.BuildingDto;
 import syu.gs_up.web.repository.BuildingRepository;
 
 import java.util.List;

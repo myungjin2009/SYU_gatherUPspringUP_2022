@@ -1,8 +1,8 @@
-package syu.gs_up.web.controller.response;
+package syu.gs_up.web.controller.building.response;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;
-import syu.gs_up.web.dto.BuildingDto;
+import syu.gs_up.web.dto.building.BuildingDto;
 
 import java.util.List;
 
