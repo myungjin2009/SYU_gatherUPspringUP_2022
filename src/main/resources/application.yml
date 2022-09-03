@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    default: secret
 
   jpa:
     generate-ddl: true
