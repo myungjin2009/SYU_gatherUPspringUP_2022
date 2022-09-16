@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>building HTML</title>
+</head>
+<body>
+    <table border="1" className="lectureTable">
+        <h2 th:text="${buildingName}"></h2>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>강의실</th>
+                <th>층수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="m : ${classRoom}">
+                <td th:text="${m.id}"></td>
+                <td th:text="${m.name}"></td>
+                <td th:text="${m.floor}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

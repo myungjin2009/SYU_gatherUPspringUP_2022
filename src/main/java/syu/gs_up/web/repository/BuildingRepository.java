@@ -8,5 +8,4 @@ import java.util.Optional;
 public interface BuildingRepository extends JpaRepository<Building,Long> {
 
     Optional<Building> findByName(String building);
-
 }

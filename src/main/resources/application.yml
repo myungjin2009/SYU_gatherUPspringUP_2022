@@ -13,12 +13,6 @@ spring:
     hibernate:
       ddl-auto: create
 
-  #use when we need to upload files from user
-  #  servlet:
-  #    multipart:
-  #      max-file-size: 5MB
-  #      max-request-size: 20MB
-
   datasource:
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
