@@ -48,9 +48,14 @@ public class TestData {
         Building silsub1 = new Building("제1실습관", "컴퓨터메카트로닉스공학부", "37.64440", "127.10543");
         buildingRepository.save(silsub1);
 
+        ClassRoom classRoom = new ClassRoom("401"+"호","4F", silsub1);
+        ClassRoom classRoom2 = new ClassRoom("402"+"호","4F", silsub1);
+        ClassRoom classRoom3 = new ClassRoom("403"+"호","4F", silsub1);
+        classRoomRepository.save(classRoom);
+        classRoomRepository.save(classRoom2);
+        classRoomRepository.save(classRoom3);
+
         for(int i = 1; i <= 5; i++) {
-            ClassRoom classRoom = new ClassRoom("40"+i+"호","4F", silsub1);
-            classRoomRepository.save(classRoom);
             Book testBook = new Book("Helloworld" + i +  " 스터디", LocalTime.of(9+(i*2),00,00), LocalTime.of(10+(i*2),30,00), LocalDate.of(2022,9,16), false, classRoom);
             bookRepository.save(testBook);
         }

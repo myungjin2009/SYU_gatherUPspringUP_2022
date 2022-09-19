@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import syu.gs_up.web.domain.college.Book;
 import syu.gs_up.web.dto.book.BookDto;
 import syu.gs_up.web.dto.classRoom.ClassRoomDto;
 import syu.gs_up.web.dto.lectures.LectureDto;
@@ -35,10 +36,12 @@ public class BuildingController {
         List<ClassRoomDto> classRoomDtos = classRoomService.getClassRoomDtoByBId(id);
         model.addAttribute("classRoom",classRoomDtos);      //강의실 호수
 
-        List<BookDto> bookDtos = bookService.getTimeTable(classRoomDtos.get(1).getId());
-//        for(int i = 0; i < classRoomDtos.size(); i++) {
-//            List<BookDto> bookDtos = bookService.getTimeTable(classRoomDtos.get(i).getId());
-//        }
+        for(int i = 0; i < classRoomDtos.size(); i++) {                 //강의실 호수별로 예약 내역
+            List<Book> book = bookService.getTimeTable(classRoomDtos.get(i).getId());
+            if(!(book.isEmpty())) {
+                model.addAttribute("bookList", book);
+            }
+        }
 
         return "/building/building";
     }

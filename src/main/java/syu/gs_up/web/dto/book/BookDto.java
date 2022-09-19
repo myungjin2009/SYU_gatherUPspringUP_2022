@@ -1,11 +1,13 @@
 package syu.gs_up.web.dto.book;
 
+import lombok.Data;
 import syu.gs_up.web.domain.college.ClassRoom;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Data
 public class BookDto {
 
     private Long bookId;

@@ -12,6 +12,5 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Long> {
     @Query("SELECT m FROM Book m JOIN m.classRoom c WHERE c.id = :classRoomID")
-    //@Query("SELECT m FROM Book m WHERE m.class_room_id = :classRoomID")
     List<Book> findByClassRoomId(@Param("classRoomID") Long id);
 }
