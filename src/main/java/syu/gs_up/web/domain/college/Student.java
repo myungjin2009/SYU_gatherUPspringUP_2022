@@ -37,4 +37,8 @@ public class Student {
         this.nickName = nickName;
         this.grade = grade;
     }
+
+    public String getEmail() {
+        return this.email;
+    }
 }
