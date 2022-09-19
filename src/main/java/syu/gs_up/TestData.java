@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import syu.gs_up.web.domain.college.Book;
 import syu.gs_up.web.domain.college.Building;
 import syu.gs_up.web.domain.college.ClassRoom;
+import syu.gs_up.web.domain.college.Student;
 import syu.gs_up.web.repository.BuildingRepository;
 import syu.gs_up.web.repository.book.BookRepository;
 import syu.gs_up.web.repository.classroom.ClassRoomRepository;
+import syu.gs_up.web.repository.student.StudentRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -24,6 +26,7 @@ public class TestData {
     private final BuildingRepository buildingRepository;
     private final ClassRoomRepository classRoomRepository;
     private final BookRepository bookRepository;
+    private final StudentRepository studentRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
@@ -58,6 +61,10 @@ public class TestData {
         for(int i = 1; i <= 5; i++) {
             Book testBook = new Book("Helloworld" + i +  " 스터디", LocalTime.of(9+(i*2),00,00), LocalTime.of(10+(i*2),30,00), LocalDate.of(2022,9,16), false, classRoom);
             bookRepository.save(testBook);
+        }
+        for(int i = 1; i <= 10; i++) {
+            Student student = new Student("홍길동"+i,"test"+i+"@naver.com","1234","홍길이"+i,(i%4 + 1));
+            studentRepository.save(student);
         }
     }
 }
