@@ -16,26 +16,27 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
+    public Boolean isAlreadyJoined(String email) {
+        Optional<Student> validate = studentRepository.findByEmail(email);
+        if(validate.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     @Transactional
     public List<String> join(Student student) {
 
         List<String> list = new ArrayList<>();
 
-        Optional<Student> validate = studentRepository.findByEmail(student.getEmail());
-        if(validate.isEmpty() == false) {
+        try{
+            studentRepository.save(student);
+        }
+        catch(Exception e) { //오류 전달
             list.add("false");
-            list.add("이미 존재하는 이메일 입니다");
-        } else {
-
-            try{
-                studentRepository.save(student);
-            }
-            catch(Exception e) { //오류 전달
-                list.add("false");
-                list.add(e.getMessage());
-                return list;
-            }
-
+            list.add(e.getMessage());
+            return list;
         }
 
         list.add("true");
