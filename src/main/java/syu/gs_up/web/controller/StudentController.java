@@ -16,6 +16,24 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    @PostMapping("/checkEmail") //html - 인증번호 받기 버튼
+    public String checkEmail(String email) {
+        //TODO 이메일이 DB에 존재하는지 확인
+        //TODO 이메일 인증 서비스 구현
+
+        return null;
+    }
+
+    @PostMapping("/verifyEmail") //html - 확인 버튼
+    public String verifyEmail(String vNumber) {
+        //TODO 넘어온 인증번호가 일치하는지 확인
+        //TODO 일치하면 회원가입 통과
+
+        return null;
+    }
+
+
+    //TODO 이름, 이메일, 비밀번호, 닉네임, 포지션, 학년 필드로 변경하기!!
     @PostMapping("/register")
     public String Register(StudentForm studentForm, Model model) {
         Student student = new Student
