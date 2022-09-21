@@ -6,8 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import syu.gs_up.web.controller.building.form.StudentForm;
 import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.dto.ResponseDto;
+import syu.gs_up.web.service.MailService;
 import syu.gs_up.web.service.building.StudentService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,15 +19,18 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @PostMapping("/checkEmail") //html - 인증번호 받기 버튼
-    public String checkEmail(String email) {
+    @PostMapping("/sendAuthNumber") //html - 인증번호 받기 버튼
+    public void checkEmail(String email) {
         //TODO 이메일이 DB에 존재하는지 확인
-        //TODO 이메일 인증 서비스 구현
+        //Boolean result = studentService.isAlreadyJoined(email);
 
-        return null;
+        Boolean result = studentService.sendVerificationNumber(email);
+        if(result) {
+            System.out.println("메일을 보냈습니다.");
+        }
     }
 
-    @PostMapping("/verifyEmail") //html - 확인 버튼
+    @PostMapping("/verifyAuthNumber") //html - 확인 버튼
     public String verifyEmail(String vNumber) {
         //TODO 넘어온 인증번호가 일치하는지 확인
         //TODO 일치하면 회원가입 통과

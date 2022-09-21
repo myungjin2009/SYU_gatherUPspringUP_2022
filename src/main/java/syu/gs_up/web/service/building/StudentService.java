@@ -3,12 +3,17 @@ package syu.gs_up.web.service.building;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import syu.gs_up.web.controller.building.form.EmailAuthForm;
+import syu.gs_up.web.domain.college.EmailAuth;
 import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.repository.EmailAuthRepository;
 import syu.gs_up.web.repository.student.StudentRepository;
+import syu.gs_up.web.service.MailService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class StudentService {
@@ -16,26 +21,51 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
+    @Autowired
+    EmailAuthRepository emailAuthRepository;
+
+    @Autowired
+    MailService mailService;
+
+    public Boolean isAlreadyJoined(String email) {
+        Optional<Student> validate = studentRepository.findByEmail(email);
+        if(validate.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    public Boolean sendVerificationNumber(String email) {
+        Integer number = ThreadLocalRandom.current().nextInt(100000, 1000000);
+
+        //이메일 인증번호 송신
+        try{
+            mailService.sendMail(email, "Gather UP, Spring UP! 인증메일 입니다.","인증번호는 " + number + " 입니다.");
+        } catch (Exception e) {
+            return false;
+        }
+
+        EmailAuth auth = new EmailAuth(email, number);
+        emailAuthRepository.save(auth);
+
+
+        return true;
+    }
+
     @Transactional
     public List<String> join(Student student) {
 
         List<String> list = new ArrayList<>();
 
-        Optional<Student> validate = studentRepository.findByEmail(student.getEmail());
-        if(validate.isEmpty() == false) {
+        try{
+            studentRepository.save(student);
+        }
+        catch(Exception e) { //오류 전달
             list.add("false");
-            list.add("이미 존재하는 이메일 입니다");
-        } else {
-
-            try{
-                studentRepository.save(student);
-            }
-            catch(Exception e) { //오류 전달
-                list.add("false");
-                list.add(e.getMessage());
-                return list;
-            }
-
+            list.add(e.getMessage());
+            return list;
         }
 
         list.add("true");
