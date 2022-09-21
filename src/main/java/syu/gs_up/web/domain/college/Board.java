@@ -4,6 +4,7 @@ package syu.gs_up.web.domain.college;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import syu.gs_up.web.domain.Base;
 
 import javax.persistence.*;
@@ -19,13 +20,14 @@ public class Board extends Base {
     private Long postId;
 
     @Column
+    private Integer viewCount = 0;
+
+    @Column
     private String title;
 
     @Column
     private String content;
 
-    @Column
-    private String purpose;
 
     @Column
     private Boolean isDone;
@@ -34,11 +36,16 @@ public class Board extends Base {
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    public Board(String title, String content, String purpose, Boolean isDone, Student student) {
+    public Board(String title, String content, Boolean isDone, Student student) {
         this.title = title;
         this.content = content;
-        this.purpose = purpose;
         this.isDone = isDone;
+        this.student = student;
+    }
+
+    public Board(String title, String content, Student student) {
+        this.title = title;
+        this.content = content;
         this.student = student;
     }
 }

@@ -66,11 +66,13 @@ public class TestData {
             studentRepository.save(student);
         }
 
+        Student testStudent = new Student("테스트","testStudent@naver.com","1234","테스팅닉네임",1);
+        studentRepository.save(testStudent);
         Student student = new Student("강감찬","test@naver.com","5678","감찬이",3);
         studentRepository.save(student);
-        Board board = new Board("이것은 제목","이것은 내용","이것은 목적",false, student);
+        Board board = new Board("이것은 제목","이것은 내용",false, student);
         boardRepository.save(board);
-        Board board2 = new Board("이것은 제목2","이것은 내용2","이것은 목적2",true, student);
+        Board board2 = new Board("이것은 제목2","이것은 내용2",true, student);
         boardRepository.save(board2);
     }
 }

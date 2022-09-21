@@ -51,19 +51,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="b : ${boardList}">
+          <tr th:each="b : ${boardList}" th:onclick="|location.href='@{/board(uid=${b.postId})}'|">
             <td th:text="${b.student.nickName}"></td>
             <td th:text="${b.title}"></td>
             <td th:text="${#strings.substring(b.created,0,10)}"></td>
-            <td>0</td>
-            <td th:text="${b.isDone} ? 'O' : 'X'">O</td>
+            <td th:text="${b.viewCount}"></td>
+            <td th:text="${b.isDone} ? 'O' : 'X'"></td>
           </tr>
 
         </tbody>
       </table>
 
       <hr />
-      <a class="btn btn-outline-info float-right">글쓰기</a>
+      <a class="btn btn-outline-info float-right" onclick="location.href='/writeBoard'">글쓰기</a>
 
       <div class="pagination justify-content-center">
         <ul class="pagination">
