@@ -6,11 +6,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import syu.gs_up.web.domain.college.Book;
-import syu.gs_up.web.domain.college.Building;
-import syu.gs_up.web.domain.college.ClassRoom;
-import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.domain.college.*;
 import syu.gs_up.web.repository.BuildingRepository;
+import syu.gs_up.web.repository.board.BoardRepository;
 import syu.gs_up.web.repository.book.BookRepository;
 import syu.gs_up.web.repository.classroom.ClassRoomRepository;
 import syu.gs_up.web.repository.student.StudentRepository;
@@ -27,6 +25,7 @@ public class TestData {
     private final ClassRoomRepository classRoomRepository;
     private final BookRepository bookRepository;
     private final StudentRepository studentRepository;
+    private final BoardRepository boardRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
@@ -66,5 +65,12 @@ public class TestData {
             Student student = new Student("홍길동"+i,"test"+i+"@naver.com","1234","홍길이"+i,(i%4 + 1));
             studentRepository.save(student);
         }
+
+        Student student = new Student("강감찬","test@naver.com","5678","감찬이",3);
+        studentRepository.save(student);
+        Board board = new Board("이것은 제목","이것은 내용","이것은 목적",false, student);
+        boardRepository.save(board);
+        Board board2 = new Board("이것은 제목2","이것은 내용2","이것은 목적2",true, student);
+        boardRepository.save(board2);
     }
 }

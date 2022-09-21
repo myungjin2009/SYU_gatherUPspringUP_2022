@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   
+  <!--nav-->
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><strong>게시글</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">홈으로</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">마이페이지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">검색</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!--table-->
+  <div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>날짜</th>
+            <th>조회수</th>
+            <th>마감여부</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="b : ${boardList}">
+            <td th:text="${b.student.nickName}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${#strings.substring(b.created,0,10)}"></td>
+            <td>0</td>
+            <td th:text="${b.isDone} ? 'O' : 'X'">O</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <hr />
+      <a class="btn btn-outline-info float-right">글쓰기</a>
+
+      <div class="pagination justify-content-center">
+        <ul class="pagination">
+          <li><a href="#" style="margin-right:5px;" class="text-secondary">1</a></li>
+          <li><a href="#" style="margin-right:5px;" class="text-secondary">2</a></li>
+          <li><a href="#" style="margin-right:5px;" class="text-secondary">3</a></li>
+          <li><a href="#" style="margin-right:5px;" class="text-secondary">4</a></li>
+          <li><a href="#" style="margin-right:5px;" class="text-secondary">5</a></li>
+        </ul>
+      </div>
+</div>
+</body>
+
+</html>
