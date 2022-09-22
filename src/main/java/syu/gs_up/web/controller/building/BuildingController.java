@@ -43,7 +43,7 @@ public class BuildingController {
             }
         }
 
-        return "/building/building";
+        return "/reservation/reservation";
     }
 
     @GetMapping("/classRoom/{id}")

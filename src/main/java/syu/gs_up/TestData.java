@@ -58,7 +58,7 @@ public class TestData {
         classRoomRepository.save(classRoom3);
 
         for(int i = 1; i <= 5; i++) {
-            Book testBook = new Book("Helloworld" + i +  " 스터디", LocalTime.of(9+(i*2),00,00), LocalTime.of(10+(i*2),30,00), LocalDate.of(2022,9,16), false, classRoom);
+            Book testBook = new Book(LocalTime.of(9+(i*2),00,00), LocalTime.of(10+(i*2),30,00), LocalDate.of(2022,9,16), false, classRoom);
             bookRepository.save(testBook);
         }
         for(int i = 1; i <= 10; i++) {

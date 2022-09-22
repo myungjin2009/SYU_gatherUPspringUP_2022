@@ -18,8 +18,6 @@ public class Book extends Base {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookId;
 
-    @Column
-    private String bookPurpose;
 
     @Column
     private LocalTime bookStartTime;
@@ -41,8 +39,7 @@ public class Book extends Base {
     private ClassRoom classRoom;
 
     //테스트용 생성자 입니다.
-    public Book(String bookPurpose, LocalTime bookStartTime, LocalTime bookEndTime, LocalDate bookDay, Boolean isProlonged, ClassRoom classRoom) {
-        this.bookPurpose = bookPurpose;
+    public Book(LocalTime bookStartTime, LocalTime bookEndTime, LocalDate bookDay, Boolean isProlonged, ClassRoom classRoom) {
         this.bookStartTime = bookStartTime;
         this.bookEndTime = bookEndTime;
         this.bookDay = bookDay;
