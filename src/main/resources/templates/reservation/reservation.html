@@ -50,13 +50,12 @@
 
 
             <td th:each="m : ${classRoom}">
+              <button type="button" class="btn btn-primary btn-sm">예약하기</button>
               <th:block th:each="n : ${bookList}">
                 <th:block th:if="${m.name == n.classRoom.name} and ${#strings.toString(num) == #strings.substring(n.bookStartTime,0,2)}">
-                  <button type="button" class="btn btn-danger btn-sm">예약불가</button>
+                  <button type="button" style="margin-left: -80px; width: 81px" class="btn btn-danger btn-sm">예약불가</button>
                 </th:block>
               </th:block>
-
-              <button type="button" class="btn btn-primary btn-sm">예약하기</button>
             </td>
           </tr>
 
