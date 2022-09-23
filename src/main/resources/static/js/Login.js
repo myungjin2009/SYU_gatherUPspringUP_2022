@@ -18,21 +18,41 @@ let btn = document.querySelector('#btn')
 //     }
 // })
 
-function sendMail(){
+function sendMail() {
     const email = $('#email').val();
-    alert("test");
-    const requestUrl = "/sendAuthNumber";
 
+    const requestUrl = "/sendAuthNumber";
 
     $.ajax({
         type: 'post',
-        url : requestUrl,
+        url: requestUrl,
         data: `email=${email}`,
-        success: function(result){
+        success: function (result) {
             console.log(result);
         },
-        error: function (error){
+        error: function (error) {
             console.log(error);
+        }
+    })
+}
+
+function login() {
+    const id = $('#id').val();
+    const pw = $('#pw').val();
+
+    let principal = new Object();
+    principal.id = id;
+    principal.pw = pw;
+
+    $.ajax({
+        type: 'post',
+        url: '/login',
+        ContentType: "application/json",
+        data: JSON.stringify(principal),
+        success: function (result) {
+            window.location.href = "/";
+        },error: function (error){
+            alert(error);
         }
     })
 }

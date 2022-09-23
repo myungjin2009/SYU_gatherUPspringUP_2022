@@ -1,21 +1,22 @@
 package syu.gs_up.web.service.building;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import syu.gs_up.web.domain.college.EmailAuth;
 import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.dto.student.LoginForm;
 import syu.gs_up.web.repository.EmailAuthRepository;
 import syu.gs_up.web.repository.student.StudentRepository;
 import syu.gs_up.web.service.MailService;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class StudentService {
 
     private final StudentRepository studentRepository;
@@ -45,20 +46,19 @@ public class StudentService {
     }
 
     @Transactional
-    public List<String> join(Student student) {
-
-        List<String> list = new ArrayList<>();
-
+    public boolean join(Student student) throws IllegalAccessException {
         try {
             studentRepository.save(student);
+            return true;
         } catch (Exception e) { //오류 전달
-            list.add("false");
-            list.add(e.getMessage());
-            return list;
+            log.error("service ex");
+            throw new IllegalAccessException();
         }
 
-        list.add("true");
-        list.add("성공하였습니다");
-        return list;
+    }
+
+    public Optional<Student> login(LoginForm form) {
+        Optional<Student> byEmail = studentRepository.findByEmail(form.getId());
+        return byEmail;
     }
 }

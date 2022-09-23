@@ -1,14 +1,14 @@
 package syu.gs_up.web.controller.building;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import syu.gs_up.web.domain.college.Book;
-import syu.gs_up.web.dto.book.BookDto;
+import syu.gs_up.web.domain.college.Student;
 import syu.gs_up.web.dto.classRoom.ClassRoomDto;
 import syu.gs_up.web.dto.lectures.LectureDto;
 import syu.gs_up.web.service.building.BookService;
@@ -29,7 +29,11 @@ public class BuildingController {
     private final BookService bookService;
 
     @GetMapping("/buildings/{id}") //id = building의 pk입니다.
-    public String getClassRoomInfo(@PathVariable("id") Long id, Model model) {
+    public String getClassRoomInfo(@PathVariable("id") Long id, Model model,
+                                   @SessionAttribute("user")Student user) {
+
+        log.info(user.getEmail());
+
         String buildingName = buildingService.getBuildingName(id);
         model.addAttribute("buildingName", buildingName);   //강의실 이름
 
