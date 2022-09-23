@@ -1,9 +1,8 @@
 package syu.gs_up.web.service.building;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import syu.gs_up.web.controller.building.form.EmailAuthForm;
 import syu.gs_up.web.domain.college.EmailAuth;
 import syu.gs_up.web.domain.college.Student;
 import syu.gs_up.web.repository.EmailAuthRepository;
@@ -16,40 +15,31 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
+@RequiredArgsConstructor
 public class StudentService {
 
-    @Autowired
-    StudentRepository studentRepository;
-
-    @Autowired
-    EmailAuthRepository emailAuthRepository;
-
-    @Autowired
-    MailService mailService;
+    private final StudentRepository studentRepository;
+    private final EmailAuthRepository emailAuthRepository;
+    private final MailService mailService;
 
     public Boolean isAlreadyJoined(String email) {
         Optional<Student> validate = studentRepository.findByEmail(email);
-        if(validate.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return validate.isPresent();
     }
 
-
+    @Transactional
     public Boolean sendVerificationNumber(String email) {
         Integer number = ThreadLocalRandom.current().nextInt(100000, 1000000);
 
         //이메일 인증번호 송신
-        try{
-            mailService.sendMail(email, "Gather UP, Spring UP! 인증메일 입니다.","인증번호는 " + number + " 입니다.");
+        try {
+            mailService.sendMail(email, "Gather UP, Spring UP! 인증메일 입니다.", "인증번호는 " + number + " 입니다.");
         } catch (Exception e) {
             return false;
         }
 
         EmailAuth auth = new EmailAuth(email, number);
         emailAuthRepository.save(auth);
-
 
         return true;
     }
@@ -59,10 +49,9 @@ public class StudentService {
 
         List<String> list = new ArrayList<>();
 
-        try{
+        try {
             studentRepository.save(student);
-        }
-        catch(Exception e) { //오류 전달
+        } catch (Exception e) { //오류 전달
             list.add("false");
             list.add(e.getMessage());
             return list;

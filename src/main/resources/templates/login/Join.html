@@ -1,68 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>JOIN</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../static/css/Login/Join.css">
-        <script src="Join.js"> </script>
-    </head>
-    <body>
-        <form action="" method="post">
-            <section class="join-form">
-                <h1>JOIN</h1>
-                <div class="int-area">
-                    <label for="id">이메일</label><br>
-                    <input type="text" name="id" autocomplete="off" required>
-                    <div class="btn-area-small">
-                        <button type="button">인증번호 받기</button><br>
-                    </div>
-                    <input type="text" placeholder="인증번호 입력하세요">
-                    <div class="btn-area-small">
-                        <button type="button">확인</button><br>
-                    </div>
-                </div>
-                <div class="int-area">
-                    <label for="pw">비밀번호</label><br>
-                    <input type="password" name="pw" autocomplete="off" required><br>
-                </div>
-                <div class="int-area">
-                    <label for="pw">비밀번호 확인</label><br>
-                    <input type="password" name="pw" autocomplete="off" required><br>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <title>JOIN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/Login/Join.css}">
+</head>
+<body>
+<form action="" method="post">
+    <section class="join-form">
+        <h1>JOIN</h1>
+        <div class="int-area">
+            <label for="email">이메일</label><br>
+            <input type="text" name="id" autocomplete="off" required id="email">
+            <div class="btn-area-small">
+                <button type="button" th:onclick="sendMail()">인증번호 받기</button>
                 <br>
-                <div class="int-area">
-                    <label for="name">이름</label>
-                    <input type="text" name="name" autocomplete="off" required><br>
-                </div>
-                <div class="int-area">
-                    <label for="name">닉네임</label>
-                    <input type="text" name="name" autocomplete="off" required><br>
-                </div>
+            </div>
+            <input type="text" placeholder="인증번호 입력하세요">
+            <div class="btn-area-small">
+                <button type="button">확인</button>
                 <br>
-                <div class="button-area2">
-                    <button type="button" class="btn btn-outline-primary">프론트엔드</button>
-                    <button type="button" class="btn btn-outline-primary">백엔드</button>
-                    <button type="button" class="btn btn-outline-primary">디자이너</button>
-                </div>
-                <br>
-                <div class="btn-area">
-                    <button type="submit">가입하기</button>
-                </div>
-                <br><br>
-                <hr>
-                <br>
-                <div class="btn-area-google">
-                    <button type="submit">구글로 간편 가입하기</button>
-                </div>
-                <div class="btn-area-naver">
-                    <button type="submit">네이버로 간편 가입하기</button>
-                </div>
-                <br><br>
-                <hr>
-            </section>
-        </form>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
-    </body>
+            </div>
+        </div>
+        <div class="int-area">
+            <label for="password">비밀번호</label><br>
+            <input id="password" type="password" name="pw" autocomplete="off" required><br>
+        </div>
+        <div class="int-area">
+            <label for="passwordConfirm">비밀번호 확인</label><br>
+            <input id="passwordConfirm" type="password" name="pw" autocomplete="off" required><br>
+        </div>
+        <br>
+        <div class="int-area">
+            <label for="memberName">이름</label>
+            <input id="memberName" type="text" name="name" autocomplete="off" required><br>
+        </div>
+        <div class="int-area">
+            <label for="nickname">닉네임</label>
+            <input id="nickname" type="text" name="name" autocomplete="off" required><br>
+        </div>
+        <br>
+        <div class="button-area2">
+            <button type="button" class="btn btn-outline-primary">프론트엔드</button>
+            <button type="button" class="btn btn-outline-primary">백엔드</button>
+            <button type="button" class="btn btn-outline-primary">디자이너</button>
+        </div>
+        <br>
+        <div class="btn-area">
+            <button type="submit">가입하기</button>
+        </div>
+        <br><br>
+        <hr>
+        <br>
+        <div class="btn-area-google">
+            <button type="submit">구글로 간편 가입하기</button>
+        </div>
+        <div class="btn-area-naver">
+            <button type="submit">네이버로 간편 가입하기</button>
+        </div>
+        <br><br>
+        <hr>
+    </section>
+</form>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script th:src="@{/js/Login.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </html>

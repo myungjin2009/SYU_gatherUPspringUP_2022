@@ -4,7 +4,6 @@ package syu.gs_up.web.domain.college;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import syu.gs_up.web.domain.Base;
 
 import javax.persistence.*;
@@ -19,6 +18,7 @@ public class Board extends Base {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
+
     @Column
     private Integer viewCount = 0;
 
@@ -27,7 +27,6 @@ public class Board extends Base {
 
     @Column
     private String content;
-
 
     @Column
     private Boolean isDone;

@@ -1,10 +1,9 @@
 package syu.gs_up.web.service.building;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import syu.gs_up.web.domain.college.Board;
 import syu.gs_up.web.domain.college.Student;
-import syu.gs_up.web.dto.board.BoardDto;
 import syu.gs_up.web.repository.board.BoardRepository;
 import syu.gs_up.web.repository.student.StudentRepository;
 
@@ -12,13 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
+    private final BoardRepository boardRepository;
 
-    @Autowired
-    BoardRepository boardRepository;
-
-    @Autowired
-    StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     public List<Board> getList() {
         List<Board> result = boardRepository.findAll();
