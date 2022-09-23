@@ -10,9 +10,6 @@ import syu.gs_up.web.domain.college.Student;
 import syu.gs_up.web.dto.student.LoginForm;
 import syu.gs_up.web.service.building.StudentService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,29 +29,12 @@ public class StudentController {
         return "/login/Login";
     }
 
-    @PostMapping("/login")
-    public String loginSuccess(LoginForm principal, HttpServletRequest req){
-        log.info("userInputData = {}",principal.getId());
-        log.info("userInputData = {}",principal.getPw());
-        Optional<Student> user = studentService.login(principal);
-
-        if(user.isPresent()){
-            Student student = user.get();
-            HttpSession session = req.getSession(true);
-            session.setAttribute("user",student);
-            return "redirect:/";
-        }else{
-            return "/login";
-        }
-    }
-
     @ResponseBody
     @PostMapping("/test")
     public String test(@RequestBody LoginForm form){
         log.info("input = {}",form.getId());
         return "success";
     }
-
 
     @ResponseBody
     @PostMapping("/sendAuthNumber") //html - 인증번호 받기 버튼

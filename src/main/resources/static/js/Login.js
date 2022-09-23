@@ -47,12 +47,12 @@ function login() {
     $.ajax({
         type: 'post',
         url: '/login',
-        ContentType: "application/json",
+        contentType: "application/json; charset=UTF-8",
         data: JSON.stringify(principal),
         success: function (result) {
-            window.location.href = "/";
+            window.location.replace("/");
         },error: function (error){
-            alert(error);
+            alert(error.responseText);
         }
     })
 }
