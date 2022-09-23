@@ -62,13 +62,13 @@ public class TestData {
             bookRepository.save(testBook);
         }
         for(int i = 1; i <= 10; i++) {
-            Student student = new Student("홍길동"+i,"test"+i+"@naver.com","1234","홍길이"+i,(i%4 + 1));
+            Student student = new Student("홍길동"+i,"test"+i+"@naver.com","1234","홍길이"+i,(i%4 + 1), "designer");
             studentRepository.save(student);
         }
 
-        Student testStudent = new Student("테스트","testStudent@naver.com","1234","테스팅닉네임",1);
+        Student testStudent = new Student("테스트","testStudent@naver.com","1234","테스팅닉네임",1, "backEnd");
         studentRepository.save(testStudent);
-        Student student = new Student("강감찬","test@naver.com","5678","감찬이",3);
+        Student student = new Student("강감찬","test@naver.com","5678","감찬이",3, "frontEnd");
         studentRepository.save(student);
         Board board = new Board("이것은 제목","이것은 내용",false, student);
         boardRepository.save(board);

@@ -44,11 +44,12 @@ public class StudentController {
     public String Register(StudentForm studentForm, Model model) {
         Student student = new Student
                 (
-                    studentForm.getName(),
-                    studentForm.getEmail(),
-                    studentForm.getPassword(),
-                    studentForm.getNickName(),
-                    studentForm.getGrade()
+                        studentForm.getName(),
+                        studentForm.getEmail(),
+                        studentForm.getPassword(),
+                        studentForm.getNickName(),
+                        studentForm.getGrade(),
+                        studentForm.getPosition()
                 );
 
         List<String> list = studentService.join(student);

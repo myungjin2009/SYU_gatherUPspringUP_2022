@@ -17,6 +17,9 @@ public class StudentForm {
     private String nickName;
     private Integer grade;
 
+    private String position;
+
+
 
     public String getName() {
         return name;
@@ -30,9 +33,9 @@ public class StudentForm {
         return password;
     }
 
-    public String getNickName() {
-        return nickName;
-    }
+    public String getNickName() { return nickName; }
+
+    public String getPosition() { return position; }
 
     public Integer getGrade() {
         return grade;
@@ -58,4 +61,6 @@ public class StudentForm {
     public void setGrade(Integer grade) {
         this.grade = grade;
     }
+
+    public void setPosition(String position) { this.position = position; }
 }

@@ -31,13 +31,17 @@ public class Student {
     @Column
     private Integer grade;
 
+    @Column
+    private String position;
+
     //기본 생성자
-    public Student(String name, String email, String password, String nickName, Integer grade) {
+    public Student(String name, String email, String password, String nickName, Integer grade, String position) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.nickName = nickName;
         this.grade = grade;
+        this.position = position;
     }
 
     public String getEmail() {
