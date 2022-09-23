@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+</head>
+<body>
+계정 정보를 입력해주세요!
+
+<form action="/user/join" method="post">
+    <div>
+        <label for="email">이메일: </label>
+        <input id="email" name="email" type="text">
+    </div>
+    <div>
+        <label for="password">패스워드: </label>
+        <input id="password" name="password" type="password">
+    </div>
+    <div>
+        <label for="nickname">닉네임: </label>
+        <input id="nickname" name="nickname" type="text">
+    </div>
+    <div>
+        <label for="grade">학년: </label>
+        <input id="grade" name="grade" type="text">
+    </div>
+    <div>
+        <label for="username">이름: </label>
+        <input id="username" name="username" type="text">
+    </div>
+
+    <input type="submit" value="가입하기">
+</form>
+</body>
+</html>

@@ -23,7 +23,17 @@
 <body>
 <h1>Gather_Up & Spring_Up</h1>
 <h2>커밋 테스트</h2>
+<a href="/user/join">회원가입</a><br>
+<!--<a href="@{/auth/login}">로그인</a><br>-->
+<!--<a href="@{/login/naver}">Naver Login</a><br>-->
+<!--<a href="@{/user}">로그인한 유저만 사용 가능</a><br>-->
+
 <div id="map" style="width:600px;height:500px;"></div>
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    Logged in as: <span id="user" th:text="${username}">None</span>-->
+<!--    <a href="/logout" class="btn btn-info active" role="button">Logout</a>-->
+<!--</div>-->
+<!--<a sec:authorize="isAnonymous()" href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>-->
 </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" th:src="@{'//dapi.kakao.com/v2/maps/sdk.js?appkey='+${@environment.getProperty('apiKey.value')}+'&libraries=clusterer'}"></script>
