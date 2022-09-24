@@ -56,3 +56,46 @@ function login() {
         }
     })
 }
+
+function register(){
+
+    const email = $('#email').val();
+    const password = $('#password').val();
+    const passwordConfirm = $('#passwordConfirm').val();
+    const memberName = $('#memberName').val();
+    const nickname = $('#nickname').val();
+
+    //TODO 학년 필드 추가 후 값 받아오기
+    if(!email || !password || !memberName || !nickname){
+        alert("모든 항목을 기입해주세요.");
+        return;
+    }
+
+    if(password !== passwordConfirm){
+        alert("비밀번호가 일치하지 않습니다.");
+        return;
+    }
+
+    let registerForm = new Object();
+    registerForm.email = email;
+    registerForm.password = password;
+    registerForm.passwordConfirm = passwordConfirm;
+    registerForm.memberName = memberName;
+    registerForm.nickname = nickname;
+
+    console.log(registerForm);
+
+    $.ajax({
+        type: 'post',
+        url: '/register',
+        contentType: "application/json;",
+        data: JSON.stringify(registerForm),
+        success: function(result){
+            alert(result);
+            window.location.replace("/login");
+        },
+        error: function(error){
+            alert(error.responseText);
+        }
+    })
+}

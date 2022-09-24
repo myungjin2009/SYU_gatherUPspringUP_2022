@@ -23,11 +23,6 @@ public class StudentService {
     private final EmailAuthRepository emailAuthRepository;
     private final MailService mailService;
 
-    public Boolean isAlreadyJoined(String email) {
-        Optional<Student> validate = studentRepository.findByEmail(email);
-        return validate.isPresent();
-    }
-
     @Transactional
     public Boolean sendVerificationNumber(String email) {
         Integer number = ThreadLocalRandom.current().nextInt(100000, 1000000);
@@ -46,19 +41,16 @@ public class StudentService {
     }
 
     @Transactional
-    public boolean join(Student student) throws IllegalAccessException {
-        try {
-            studentRepository.save(student);
-            return true;
-        } catch (Exception e) { //오류 전달
-            log.error("service ex");
-            throw new IllegalAccessException();
-        }
-
+    public void join(Student student) {
+        studentRepository.save(student);
     }
 
     public Optional<Student> login(LoginForm form) {
         Optional<Student> byEmail = studentRepository.findByEmail(form.getId());
         return byEmail;
+    }
+
+    public boolean isDuplicateEmail(String email) {
+        return studentRepository.existsByEmail(email);
     }
 }
