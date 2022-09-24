@@ -13,4 +13,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     Optional<Student> findByEmail(@Param("email") String email);
 
 
+    @Query("select count(s.studentId) > 0 from Student s " +
+            "where s.email = :email")
+    boolean existsByEmail(@Param("email") String email);
 }

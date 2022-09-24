@@ -2,17 +2,13 @@ package syu.gs_up.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import syu.gs_up.web.controller.building.form.StudentForm;
 import syu.gs_up.web.domain.college.Student;
-import syu.gs_up.web.dto.student.LoginForm;
 import syu.gs_up.web.service.building.StudentService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,30 +27,6 @@ public class StudentController {
     public String login(){
         return "/login/Login";
     }
-
-    @PostMapping("/login")
-    public String loginSuccess(LoginForm principal, HttpServletRequest req){
-        log.info("userInputData = {}",principal.getId());
-        log.info("userInputData = {}",principal.getPw());
-        Optional<Student> user = studentService.login(principal);
-
-        if(user.isPresent()){
-            Student student = user.get();
-            HttpSession session = req.getSession(true);
-            session.setAttribute("user",student);
-            return "redirect:/";
-        }else{
-            return "/login";
-        }
-    }
-
-    @ResponseBody
-    @PostMapping("/test")
-    public String test(@RequestBody LoginForm form){
-        log.info("input = {}",form.getId());
-        return "success";
-    }
-
 
     @ResponseBody
     @PostMapping("/sendAuthNumber") //html - 인증번호 받기 버튼
@@ -78,9 +50,11 @@ public class StudentController {
 
 
     //TODO 이름, 이메일, 비밀번호, 닉네임, 포지션, 학년 필드로 변경하기!!
+    //TODO join.html에 현재 학년 태그가 없습니다. 추가 부탁드립니다.
+    //  AJAX 작성도 해놨습니다. 거기에 따로 학년 값 받아오는거 추가해주세요.
     @ResponseBody
     @PostMapping("/register")
-    public String Register(StudentForm studentForm, Model model) {
+    public ResponseEntity Register(@RequestBody StudentForm studentForm) {
         Student student = new Student
                 (
                         studentForm.getName(),
@@ -91,18 +65,12 @@ public class StudentController {
                         studentForm.getPosition()
                 );
 
-        try{
+        //TODO 하드코딩 문자열은 지양하는게 좋습니다.
+        if(studentService.isDuplicateEmail(studentForm.getEmail())){
+            return ResponseEntity.badRequest().body("이미 가입된 이메일입니다.");
+        }else{
             studentService.join(student);
-        }catch(IllegalAccessException e){
-            log.error("controller ex");
-            return "중복";
+            return ResponseEntity.ok().body("가입되었습니다.");
         }
-        return "가입되셨습니다.";
-
-//
-//        model.addAttribute("isSuccess", list.get(0));
-//        model.addAttribute("reason", list.get(1));
-
-//        return "/login/registerSuccessful";
     }
 }
