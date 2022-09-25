@@ -6,8 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import syu.gs_up.web.controller.building.form.StudentForm;
+import syu.gs_up.web.domain.college.EmailAuth;
 import syu.gs_up.web.domain.college.Student;
 import syu.gs_up.web.service.building.StudentService;
+
+import java.util.Optional;
+
+import static java.lang.Integer.parseInt;
 
 
 @Controller
@@ -17,15 +22,14 @@ public class StudentController {
 
     private final StudentService studentService;
 
-
-    @GetMapping("/signUp")
+    @GetMapping("/join")
     public String signUp(){
-        return "/login/Join";
+        return "login/Join";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "/login/Login";
+        return "login/Login";
     }
 
     @ResponseBody
@@ -40,12 +44,19 @@ public class StudentController {
         }
     }
 
+    @ResponseBody
     @PostMapping("/verifyAuthNumber") //html - 확인 버튼
-    public String verifyEmail(String vNumber) {
+    public ResponseEntity verifyEmail(@RequestParam String email, @RequestParam String authNumber) {
         //TODO 넘어온 인증번호가 일치하는지 확인
-        //TODO 일치하면 회원가입 통과
+        EmailAuth emailAuth = new EmailAuth(email, parseInt(authNumber));
+        Optional<EmailAuth> result = studentService.verifyNumber(emailAuth);
+        if(result.isPresent()) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.badRequest().body("인증번호가 불일치합니다.");
+        }
 
-        return null;
+
     }
 
 

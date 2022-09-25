@@ -22,11 +22,15 @@ public class BoardService {
         return result;
     }
 
-    public Boolean uploadBoardTEST(String title, String content) {
-        //TODO 유저정보를 불러오는 로직이 있어야 함, 지금은 임시로 testStudent@naver.com 를 사용
-        Optional<Student> testStudentData = studentRepository.findByEmail("testStudent@naver.com");
+    public Board getBoard(Long id) {
+        Optional<Board> result = boardRepository.findById(id);
+        return result.get();
+    }
+
+    public Boolean uploadBoard(Student user, String title, String content) {
+        Optional<Student> testStudentData = studentRepository.findByEmail(user.getEmail());
         if(testStudentData.isEmpty()) {
-            System.out.println("BoardService.java - testStudentData가 비어있습니다!!!!");
+            System.out.println("BoardService.java - 회원정보가 없습니다!!!!");
             return false;
         } else {
             Board board = new Board(title, content, testStudentData.get());

@@ -20,6 +20,6 @@ public class MainController {
 
         log.info("user  = {} ", user.getEmail());
 
-        return "/main/home";
+        return "main/home";
     }
 }

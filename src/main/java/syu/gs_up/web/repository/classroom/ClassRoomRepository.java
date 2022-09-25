@@ -15,4 +15,7 @@ public interface ClassRoomRepository extends JpaRepository<ClassRoom,Long> {
             "where b.buildingId = :bid")
     List<ClassRoom> findByBuildingId(@Param("bid") Long id);
 
+    @Query("select m from ClassRoom m where m.name = :name")
+    ClassRoom getByName(@Param("name") String name);
+
 }

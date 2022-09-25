@@ -38,6 +38,10 @@ public class Book extends Base {
     @JoinColumn(name = "class_room_id",nullable = false)
     private ClassRoom classRoom;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private Student student;
+
     //테스트용 생성자 입니다.
     public Book(LocalTime bookStartTime, LocalTime bookEndTime, LocalDate bookDay, Boolean isProlonged, ClassRoom classRoom) {
         this.bookStartTime = bookStartTime;
@@ -45,5 +49,12 @@ public class Book extends Base {
         this.bookDay = bookDay;
         this.isProlonged = isProlonged;
         this.classRoom = classRoom;
+    }
+
+    public Book(LocalTime bookStartTime, LocalDate bookDay, ClassRoom classRoom, Student student) {
+        this.bookStartTime = bookStartTime;
+        this.bookDay = bookDay;
+        this.classRoom = classRoom;
+        this.student = student;
     }
 }

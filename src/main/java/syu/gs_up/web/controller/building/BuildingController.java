@@ -35,25 +35,24 @@ public class BuildingController {
         log.info(user.getEmail());
 
         String buildingName = buildingService.getBuildingName(id);
+        model.addAttribute("buildingId", id);
         model.addAttribute("buildingName", buildingName);   //강의실 이름
 
         List<ClassRoomDto> classRoomDtos = classRoomService.getClassRoomDtoByBId(id);
         model.addAttribute("classRoom",classRoomDtos);      //강의실 호수
 
-        for(int i = 0; i < classRoomDtos.size(); i++) {                 //강의실 호수별로 예약 내역
-            List<Book> book = bookService.getTimeTable(classRoomDtos.get(i).getId());
-            if(!(book.isEmpty())) {
-                model.addAttribute("bookList", book);
-            }
+        List<Book> book = bookService.getTimeTableAll();
+        if(!(book.isEmpty())) {
+            model.addAttribute("bookList", book);
         }
 
-        return "/reservation/reservation";
+        return "reservation/reservation";
     }
 
     @GetMapping("/classRoom/{id}")
     public String getLectureInfo(@PathVariable("id") Long id, Model model){
         List<LectureDto> lectureDtos = lectureService.getLectureDtosById(id);
         model.addAttribute("lectures",lectureDtos);
-        return "/building/classRoom";
+        return "building/classRoom";
     }
 }

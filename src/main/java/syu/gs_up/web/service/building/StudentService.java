@@ -40,13 +40,18 @@ public class StudentService {
         return true;
     }
 
+    public Optional<EmailAuth> verifyNumber(EmailAuth emailAuth) {
+        Optional<EmailAuth> result = emailAuthRepository.findEmailAndAuthNumber(emailAuth.getAuthEmail(), emailAuth.getAuthNumber());
+        return result;
+    }
+
     @Transactional
     public void join(Student student) {
         studentRepository.save(student);
     }
 
     public Optional<Student> login(LoginForm form) {
-        Optional<Student> byEmail = studentRepository.findByEmail(form.getId());
+        Optional<Student> byEmail = studentRepository.findUserID(form.getId(),form.getPw());
         return byEmail;
     }
 
