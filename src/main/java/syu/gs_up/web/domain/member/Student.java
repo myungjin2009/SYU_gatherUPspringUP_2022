@@ -1,5 +1,6 @@
 package syu.gs_up.web.domain.member;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class Student {
 //@NoArgsConstructor
     @Id @GeneratedValue

@@ -76,5 +76,8 @@ public class UserService {
         this.userRepository.save(student);
         return student;
     }
+    public Student login(Student student) throws Exception{
+        return userRepository.save(student);
+    }
 }
 

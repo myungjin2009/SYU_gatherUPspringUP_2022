@@ -2,6 +2,8 @@ package syu.gs_up.web.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import syu.gs_up.web.domain.member.Student;
+
+import java.util.Optional;
 //import org.springframework.stereotype.Repository;
 //import syu.gs_up.web.domain.member.User;
 
@@ -19,5 +21,6 @@ import syu.gs_up.web.domain.member.Student;
 //}
 
 public interface UserRepository extends JpaRepository<Student, Long> {
+    Optional<Student> findByemail(String email);
 }
 

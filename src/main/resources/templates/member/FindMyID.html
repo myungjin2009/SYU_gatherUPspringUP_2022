@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>FindMyID</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="FindMyID.css">
+  <script src="FindMyID.js"> </script>
+</head>
+<body>
+<section class="FindID-form">
+  <h1>FIND MY ID</h1>
+  <form action="/user/findid" method="post">
+    <div class="int-area">
+      <input type="text" name="username" id="username" autocomplete="off" required>
+      <label for="id">이름</label>
+    </div>
+    <div class="int-area">
+      <input type="text" min=0 name="useremail" id="useremail" autocomplete="off" required>
+      <label for="id">이메일주소</label>
+    </div>
+    <div class="btn-area">
+      <button type="button">인증번호 받기</button>
+    </div>
+    <div class="int-area">
+      <input type="number" min=0 name="confirmnum" id="confirmnum" autocomplete="off" required>
+      <label for="id">인증번호</label>
+    </div>
+    <div class="btn-area">
+      <button type="button">확인</button>
+    </div>
+    <br>
+    <div class="int-area">
+      <a href="FindMyPW.html">비밀번호 찾기</a>
+    </div>
+  </form>
+</section>
+</body>
+</html>

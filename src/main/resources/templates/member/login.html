@@ -10,13 +10,13 @@
 <body>
 <section class="login-form">
   <h1>LOGIN</h1>
-  <form action="">
+  <form action="/user/login" method="post">
     <div class="int-area">
-      <input type="text" name="id" id="id" autocomplete="off" required>
-      <label for="id">ID</label>
+      <input type="text" name="email" id="email" autocomplete="off" required>
+      <label for="email">email</label>
     </div>
     <div class="int-area">
-      <input type="password" name="pw" id="password" autocomplete="off" required>
+      <input type="password" name="password" id="password" autocomplete="off" required>
       <label for="password">PASSWORD</label>
     </div>
     <div class="btn-area">
@@ -24,18 +24,12 @@
 
     </div>
 
-
-    <div class="container">
-      <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-      <!-- 네이버 로그인 버튼 추가 -->
-      <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
-    </div>
   </form>
   <div class="caption">
-    <a href="">Forgot Password?</a>
+    <a href="/user/findpassword">Forgot Password?</a>
   </div>
   <div class="caption">
-  <a href="/join">Sign up</a>
+  <a href="/user/join">Sign up</a>
 </div>
 
 </section>
