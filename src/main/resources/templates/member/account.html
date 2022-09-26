@@ -49,12 +49,12 @@
           <div class="card text-center">
             <div class="card__body dev">
               <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
-              <img class="avatar avatar--xl dev__avatar" src="https://avatars.githubusercontent.com/u/33843378" />
+              <img class="avatar avatar--xl dev__avatar" th:src="@{/image/profile.jpg}" />
               <h2 class="dev__name" th:text="${student.nickname}">닉네임</h2>
-              <p class="dev__title" th:text="${student.position}">포지션</p>
-              <p class="dev__location" th:text="${student.grade}">학년</p>
+              <p class="dev__title" th:text="|포지션 : ${student.position}|">포지션</p>
+              <p class="dev__location" th:text="|학년 : ${student.grade}학년|">학년</p>
 
-              <a href="#" class="btn btn--sub btn--lg">일단 버튼 </a>
+              <a href="#" class="btn btn--sub btn--lg">일단 버튼</a>
             </div>
           </div>
         </div>
@@ -63,14 +63,16 @@
           <div class="devInfo">
             <h3 class="devInfo__title">내가 누구?</h3>
             <p class="devInfo__about">
-              하드코딩 소개 부탁
+              저는 백엔드 개발자를 희망하는 컴퓨터공학과 학부생 입니다!!
               <br />
-             ilis? Dolor placeat vel delectus ipsam ullam.
+              현재 스프링 부트와 JPA를 기반으로 웹 개발을 공부하고 있으며 다수의 프로젝트를 진행한 경험이 있습니다.
+              Mybatis, Redis, Batch 모두 프로젝트에 도입하여 사용해본 경험 또한 있습니다.
+              <br>
+              어떤 프로젝트에 참여하더라도 좋은 성과를 이끌어 낼 자신이 있습니다.
             </p>
           </div>
           <div class="settings">
             <h3 class="settings__title">예약 현황</h3>
-<!--            <a class="tag tag&#45;&#45;pill tag&#45;&#45;sub settings__btn tag&#45;&#45;lg" href="#"><i class="im im-plus"></i> Add Skill</a>-->
           </div>
 
           <table class="settings__table">
@@ -88,64 +90,6 @@
             </tr>
           </table>
 
-<!--          <div class="settings">-->
-<!--            <h3 class="settings__title">Projects</h3>-->
-<!--            <a class="tag tag&#45;&#45;pill tag&#45;&#45;sub settings__btn tag&#45;&#45;lg" href="#"><i class="im im-plus"></i> Add Project</a>-->
-<!--          </div>-->
-
-<!--          <table class="settings__table">-->
-<!--            <tr>-->
-<!--              <td class="settings__thumbnail">-->
-<!--                <a href="single-project.html"><img src="images/project-a.png" alt="Project Thumbnail" /></a>-->
-<!--              </td>-->
-<!--              <td class="settings__tableInfo">-->
-<!--                <a href="single-project.html">Yoga Studio Landing Page</a>-->
-<!--                <p>-->
-<!--                  Consectetur adipisicing elit. Natus nam dolore aut sed vitae eos architecto unde tempore-->
-<!--                  exercitationem fugiat?...-->
-<!--                </p>-->
-<!--              </td>-->
-<!--              <td class="settings__tableActions">-->
-<!--                <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>-->
-<!--                <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>-->
-<!--                  Delete</a>-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <td class="settings__thumbnail">-->
-<!--                <a href="single-project.html"><img src="images/project-b.png" alt="Project Thumbnail" /></a>-->
-<!--              </td>-->
-<!--              <td class="settings__tableInfo">-->
-<!--                <a href="single-project.html">DevSearch Website UI Design</a>-->
-<!--                <p>-->
-<!--                  Consectetur adipisicing elit. Natus nam dolore aut sed vitae eos architecto unde tempore-->
-<!--                  exercitationem fugiat?...-->
-<!--                </p>-->
-<!--              </td>-->
-<!--              <td class="settings__tableActions">-->
-<!--                <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>-->
-<!--                <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>-->
-<!--                  Delete</a>-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <td class="settings__thumbnail">-->
-<!--                <a href="single-project.html"><img src="images/project-a.png" alt="Project Thumbnail" /></a>-->
-<!--              </td>-->
-<!--              <td class="settings__tableInfo">-->
-<!--                <a href="single-project.html">Portfolio Website Design</a>-->
-<!--                <p>-->
-<!--                  Consectetur adipisicing elit. Natus nam dolore aut sed vitae eos architecto unde tempore-->
-<!--                  exercitationem fugiat?...-->
-<!--                </p>-->
-<!--              </td>-->
-<!--              <td class="settings__tableActions">-->
-<!--                <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>-->
-<!--                <a class="tag tag&#45;&#45;pill tag&#45;&#45;main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>-->
-<!--                  Delete</a>-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--          </table>-->
         </div>
       </div>
     </div>
