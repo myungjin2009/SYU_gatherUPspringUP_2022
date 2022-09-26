@@ -16,10 +16,10 @@ public class Lecture {
     private Long lectureId;
 
     @Column(nullable = false)
-    private int startTime;
+    private LocalTime startTime;
 
     @Column(nullable = false)
-    private int endTime;
+    private LocalTime endTime;
 
     private String professor;
 
@@ -32,7 +32,7 @@ public class Lecture {
     @JoinColumn(name = "class_room_id")
     private ClassRoom classRoom;
 
-    public Lecture(int startTime, int endTime, String professor, String lectureName, String lectureDay,ClassRoom classRoom) {
+    public Lecture(LocalTime startTime, LocalTime endTime, String professor, String lectureName, String lectureDay,ClassRoom classRoom) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.professor = professor;

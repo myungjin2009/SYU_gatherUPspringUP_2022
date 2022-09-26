@@ -32,6 +32,7 @@ public class ClassRoomService {
                 .collect(Collectors.toList());
     }
 
+
     public ClassRoom getClassRoomByName(String name) {
         ClassRoom classRoom = classRoomRepository.getByName(name);
         return classRoom;

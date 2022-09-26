@@ -8,6 +8,7 @@ import syu.gs_up.web.controller.building.form.LectureForm;
 import syu.gs_up.web.domain.college.ClassRoom;
 import syu.gs_up.web.domain.college.Lecture;
 import syu.gs_up.web.dto.lectures.LectureDto;
+import syu.gs_up.web.dto.reservation.ReservationCheck;
 import syu.gs_up.web.repository.classroom.ClassRoomRepository;
 import syu.gs_up.web.repository.lecture.LectureRepository;
 
@@ -38,7 +39,11 @@ public class LectureService {
         List<Lecture> lectures = lectureRepository.findLecturesByCId(id);
         return lectures
                 .stream()
-                .map(l -> new LectureDto(l.getLectureName(),l.getProfessor(),l.getLectureDay(),l.getStartTime(),l.getEndTime()))
+                .map(l -> new LectureDto(l.getLectureName(), l.getProfessor(), l.getLectureDay(), l.getStartTime(), l.getEndTime()))
                 .collect(Collectors.toList());
+    }
+
+    public boolean findExistingLecture(ReservationCheck reservationCheck) {
+        return lectureRepository.findExistingLecture(reservationCheck.getClassRoom(), reservationCheck.getStart_time());
     }
 }
