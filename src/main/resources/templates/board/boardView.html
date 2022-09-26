@@ -43,7 +43,7 @@
     <th:block th:if="${sessions.studentId == board.student.studentId}">
       <button type="submit" class="btn btn-outline-primary" style="margin-right: auto; font-size: 15px; height: 35px; border-radius: 8px">마감하기</button>
       <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px; font-size: 15px; height: 35px; border-radius: 8px">수정</button>
-      <button type="submit" class="btn btn-danger" style="font-size: 15px; height: 35px; border-radius: 8px">삭제</button>
+      <button type="submit" th:onClick="deleteView()" class="btn btn-danger" style="font-size: 15px; height: 35px; border-radius: 8px">삭제</button>
     </th:block>
   </th:block>
   </div>
@@ -82,13 +82,9 @@
       </th:block>
     </div>
   </div>
-
-
-
-
-
-
 </div>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script th:src="@{/js/BoardView.js}"></script>
 </html>
