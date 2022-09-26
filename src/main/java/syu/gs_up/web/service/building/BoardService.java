@@ -22,6 +22,11 @@ public class BoardService {
         return result;
     }
 
+    public List<Board> getListOpposite() {
+        List<Board> result = boardRepository.findAllOrderByPostIdDESC();
+        return result;
+    }
+
     public Board getBoard(Long id) {
         Optional<Board> result = boardRepository.findById(id);
         return result.get();
