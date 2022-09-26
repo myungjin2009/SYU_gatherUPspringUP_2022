@@ -28,7 +28,7 @@ function backClick() {
 }
 
 function designerClick() {
-    positionSelector = "Designer";
+    positionSelector = "designer";
 }
 
 function sendMail() {

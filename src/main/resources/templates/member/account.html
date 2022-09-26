@@ -18,20 +18,9 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark bg-primary" style="padding-top:0; padding-bottom:0.5;" th:fragment="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/855247460909711370/1022922100094279740/SKILL_-_UP.png" alt=""></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong>Gather_up</strong></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-</nav>
+<div style="background-color:#0D6EFD; padding:5px 5px 0px 5px;">
+  <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/855247460909711370/1022922100094279740/SKILL_-_UP.png" alt=""></a>
+</div>
 
   <!-- Main Section -->
   <main class="settingsPage profile my-md">
@@ -43,26 +32,15 @@
               <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
               <img class="avatar avatar--xl dev__avatar" th:src="@{/image/profile.jpg}" />
               <h2 class="dev__name" th:text="${student.nickname}">닉네임</h2>
+              <br>
               <p class="dev__title" th:text="|포지션 : ${student.position}|">포지션</p>
               <p class="dev__location" th:text="|학년 : ${student.grade}학년|">학년</p>
-
-              <a href="#" class="btn btn--sub btn--lg">일단 버튼</a>
             </div>
           </div>
         </div>
 
         <div class="column column--2of3">
-          <div class="devInfo">
-            <h3 class="devInfo__title">내가 누구?</h3>
-            <p class="devInfo__about">
-              저는 백엔드 개발자를 희망하는 컴퓨터공학과 학부생 입니다!!
-              <br />
-              현재 스프링 부트와 JPA를 기반으로 웹 개발을 공부하고 있으며 다수의 프로젝트를 진행한 경험이 있습니다.
-              Mybatis, Redis, Batch 모두 프로젝트에 도입하여 사용해본 경험 또한 있습니다.
-              <br>
-              어떤 프로젝트에 참여하더라도 좋은 성과를 이끌어 낼 자신이 있습니다.
-            </p>
-          </div>
+          <br><br><br>
           <div class="settings">
             <h3 class="settings__title">예약 현황</h3>
           </div>
@@ -71,10 +49,10 @@
             <tr th:if="${student.buildingName != null}" id="bookTr">
               <td class="settings__tableInfo">
                 <h4 th:text="|${student.buildingName} ${student.classRoomName}|">강의실</h4>
-                <p th:text="|예약 시간 : ${student.bookStart} - ${student.bookEndTime}|"></p>
+                <p th:text="|예약 시간 :   ${student.bookStart}|"></p>
               </td>
               <td class="settings__tableActions">
-                <a class="tag tag--pill tag--main settings__btn" th:onclick="bookCancel([[${student.id}]])">예약 취소</a>
+                <a class="tag tag--pill tag--main settings__btn" th:onclick="bookCancel([[${student.id}]])">X</a>
               </td>
             </tr>
             <tr>
