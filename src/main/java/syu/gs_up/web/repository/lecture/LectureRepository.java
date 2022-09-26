@@ -19,7 +19,8 @@ public interface LectureRepository extends JpaRepository<Lecture,Long> {
             "from Lecture l " +
             "left join l.classRoom c " +
             "where c.name = :room " +
+            "and c.building.buildingId = :bId " +
             "and l.startTime <= :time " +
             "and l.endTime >= :time")
-    boolean findExistingLecture(@Param("room") String classRoom,@Param("time") String start_time);
+    boolean findExistingLecture(@Param("bId") Long bId,@Param("room") String classRoom,@Param("time") LocalTime start_time);
 }

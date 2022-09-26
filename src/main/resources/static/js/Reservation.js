@@ -1,10 +1,4 @@
-function addReservation(requestObject) {
-
-
-
-}
-
-function reserve(){
+function reserve() {
     const requestUrl = '/building/reservationCheck';
 
 //                  <input id="buildingId" name="buildingId" style="display:none" th:value="${buildingId}">
@@ -20,13 +14,12 @@ function reserve(){
     $.ajax({
         type: 'post',
         url: requestUrl,
-        contentType : 'application/json',
-        date: JSON.stringify(requestObject),
+        contentType: 'application/json;',
+        data: JSON.stringify(requestObject),
         async: false,
-        success: function (result){
+        success: function (result) {
 
-            addReservation(requestObject);
-        },error: function (error){
+        }, error: function (error) {
             alert(error.responseText);
         }
 

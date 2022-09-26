@@ -44,6 +44,6 @@ public class LectureService {
     }
 
     public boolean findExistingLecture(ReservationCheck reservationCheck) {
-        return lectureRepository.findExistingLecture(reservationCheck.getClassRoom(), reservationCheck.getStart_time());
+        return lectureRepository.findExistingLecture(reservationCheck.getBuildingId(),reservationCheck.getClassRoom(), reservationCheck.getStart_time());
     }
 }
