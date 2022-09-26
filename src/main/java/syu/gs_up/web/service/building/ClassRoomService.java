@@ -32,6 +32,12 @@ public class ClassRoomService {
                 .collect(Collectors.toList());
     }
 
+
+    public ClassRoom getClassRoomByName(String name) {
+        ClassRoom classRoom = classRoomRepository.getByName(name);
+        return classRoom;
+    }
+
     @Transactional
     public void addClassRoom(ClassRoomForm form) {
         Optional<Building> buildingOptional = buildingRepository.findByName(form.getBuilding());

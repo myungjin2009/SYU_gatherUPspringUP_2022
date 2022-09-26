@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary" style="padding-top:0; padding-bottom:0.5;" th:fragment="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/855247460909711370/1022922100094279740/SKILL_-_UP.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong>Gather_up</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" th:if="${session.user == null}" aria-current="page" href="#" style="color:black;">로그인</a>
+            <form method="post" th:action="@{/logout}"><a type="submit" class="nav-link active" th:if="${session.user != null}" aria-current="page"  th:href="@{/logout}" style="color:black;">
+              로그아웃</a></form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/join" style="color:black;">회원가입</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/my-page" style="color:black;">마이페이지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/boardList" style="color:black;">게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" style="color:black;">예약하기</a>
+          </li>
+
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit" style="padding=fixed;">검색</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

@@ -2,6 +2,8 @@ package syu.gs_up.web.dto.lectures;
 
 import lombok.Data;
 
+import java.time.LocalTime;
+
 @Data
 public class LectureDto {
 
@@ -9,10 +11,10 @@ public class LectureDto {
     private String professor;
     private String lectureDay;
 
-    private int startTime;
-    private int endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
 
-    public LectureDto(String lectureName, String professor, String lectureDay, int startTime, int endTime) {
+    public LectureDto(String lectureName, String professor, String lectureDay, LocalTime startTime, LocalTime endTime) {
         this.lectureName = lectureName;
         this.professor = professor;
         this.lectureDay = lectureDay;

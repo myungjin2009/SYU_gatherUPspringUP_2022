@@ -34,6 +34,9 @@ public class Student {
     @Column
     private String position;
 
+    @OneToOne(mappedBy = "student",fetch = FetchType.LAZY)
+    private Book book;
+
     //기본 생성자
     public Student(String name, String email, String password, String nickName, Integer grade, String position) {
         this.name = name;
@@ -46,5 +49,9 @@ public class Student {
 
     public String getEmail() {
         return this.email;
+    }
+
+    public void addBook(Book book){
+        this.book = book;
     }
 }

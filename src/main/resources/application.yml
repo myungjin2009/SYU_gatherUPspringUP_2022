@@ -14,6 +14,7 @@ spring:
       ddl-auto: create
 
   datasource:
+    sql-script-encoding: UTF-8
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username:
@@ -32,6 +33,8 @@ spring:
 
 #use when we need to use sessions for login
 server:
+  address: 0.0.0.0
+  port: 6540
   servlet:
     session:
       cookie:

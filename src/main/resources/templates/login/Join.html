@@ -16,12 +16,12 @@
             <label for="email">이메일</label><br>
             <input type="text" name="id" autocomplete="off" required id="email">
             <div class="btn-area-small">
-                <button type="button" th:onclick="sendMail()">인증번호 받기</button>
+                <button id='emailSendBtn' th:onclick="sendMail()">인증번호 받기</button>
                 <br>
             </div>
-            <input type="text" placeholder="인증번호 입력하세요">
+            <input type="text" placeholder="인증번호 입력하세요" id="authNumber">
             <div class="btn-area-small">
-                <button type="button">확인</button>
+                <button id='verifyBtn' th:onclick="verifyMail()">확인</button>
                 <br>
             </div>
         </div>
@@ -44,9 +44,9 @@
         </div>
         <br>
         <div class="button-area2">
-            <button type="button" class="btn btn-outline-primary">프론트엔드</button>
-            <button type="button" class="btn btn-outline-primary">백엔드</button>
-            <button type="button" class="btn btn-outline-primary">디자이너</button>
+            <button type="button" th:onclick="frontClick()" class="btn btn-outline-primary">프론트엔드</button>
+            <button type="button" th:onclick="backClick()" class="btn btn-outline-primary">백엔드</button>
+            <button type="button" th:onclick="designerClick()" class="btn btn-outline-primary">디자이너</button>
         </div>
         <br>
         <div class="btn-area">

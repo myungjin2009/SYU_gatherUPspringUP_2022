@@ -4,10 +4,20 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import syu.gs_up.web.controller.building.form.StudentForm;
+import syu.gs_up.web.domain.college.EmailAuth;
 import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.dto.student.StudentBook;
+import syu.gs_up.web.global.ex.SessionEmptyEx;
 import syu.gs_up.web.service.building.StudentService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
+import java.util.Optional;
+
+import static java.lang.Integer.parseInt;
 
 
 @Controller
@@ -17,15 +27,19 @@ public class StudentController {
 
     private final StudentService studentService;
 
-
-    @GetMapping("/signUp")
+    @GetMapping("/join")
     public String signUp(){
-        return "/login/Join";
+        return "login/Join";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "/login/Login";
+        return "login/Login";
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request){
+        return "";
     }
 
     @ResponseBody
@@ -40,14 +54,20 @@ public class StudentController {
         }
     }
 
+    @ResponseBody
     @PostMapping("/verifyAuthNumber") //html - 확인 버튼
-    public String verifyEmail(String vNumber) {
+    public ResponseEntity verifyEmail(@RequestParam String email, @RequestParam String authNumber) {
         //TODO 넘어온 인증번호가 일치하는지 확인
-        //TODO 일치하면 회원가입 통과
+        EmailAuth emailAuth = new EmailAuth(email, parseInt(authNumber));
+        Optional<EmailAuth> result = studentService.verifyNumber(emailAuth);
+        if(result.isPresent()) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.badRequest().body("인증번호가 불일치합니다.");
+        }
 
-        return null;
+
     }
-
 
     //TODO 이름, 이메일, 비밀번호, 닉네임, 포지션, 학년 필드로 변경하기!!
     //TODO join.html에 현재 학년 태그가 없습니다. 추가 부탁드립니다.
@@ -73,4 +93,19 @@ public class StudentController {
             return ResponseEntity.ok().body("가입되었습니다.");
         }
     }
+    @GetMapping("/my-page")
+    public String myPage(Model model,@SessionAttribute(value = "user",required = false) Student student) {
+        if(Objects.isNull(student)){
+            throw new SessionEmptyEx();
+        }
+
+        StudentBook studentBook = studentService.getStudentDataWithBookInfo(student.getStudentId());
+        model.addAttribute("student",studentBook);
+        return "/member/account";
+    }
+
+
+//            HttpSession session = request.getSession(false);
+//        session.removeAttribute("user");
+//        return "redirect:/";
 }
