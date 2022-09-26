@@ -28,7 +28,7 @@ function setMarker(arrays){
     // 마커가 표시될 위치입니다
     for(let i =0;i<arrays.length;i++){
         let markerPosition  = new kakao.maps.LatLng(arrays[i].latitude, arrays[i].longitude);
-    // 마커를 생성합니다
+
         let marker = new kakao.maps.Marker({
             position: markerPosition
         });

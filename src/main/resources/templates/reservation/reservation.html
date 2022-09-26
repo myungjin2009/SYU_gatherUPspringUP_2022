@@ -9,33 +9,10 @@
   </head>
   <body style="padding-top: 60px;">
     <!--nav바-->
-    <nav id="nav" class="navbar navbar-dark bg-primary" style="position: fixed; top: 0; right: 0; left: 0;">
-        <div class="container-fluid">
-          <a class="navbar-brand" style="font-weight:bold" th:text="${buildingName}" href="#"><strong>제 199실습관</strong></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">홈으로</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">마이페이지</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">검색</a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-light" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-      
-      <!--예약-->
+    <nav th:replace="main/nav::navbar"></nav>
+
+
+    <!--예약-->
       <table class="table caption-top">
         <caption>빈 강의실</caption>
         <thead>

@@ -50,50 +50,22 @@
     height: 11em;
   }
 }
+
+
 </style>
+
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
+    <!-- Mumble UI -->
+    <link rel="stylesheet" th:href="@{/css/uikit/styles/uikit.css}" />
+    <!-- Dev Search UI -->
+    <link rel="stylesheet" th:href="@{/css/styles/app.css}"/>
+
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!--nav-->
+<nav th:replace="main/nav::navbar"></nav>
 
-<nav class="navbar navbar-dark bg-primary" style="padding-top:0; padding-bottom:0.5;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="https://cdn.discordapp.com/attachments/855247460909711370/1022922100094279740/SKILL_-_UP.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong>Gather_up</strong></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color:black;">로그인</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color:black;">회원가입</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color:black;">마이페이지</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/boardList" style="color:black;">게시판</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color:black;">예약하기</a>
-                    </li>
-
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit" style="padding=fixed;">검색</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
 <div id="map" style="width:100%;height:600px;"></div>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -106,7 +78,7 @@
                             <h5 class="card-title">코딩 같이할 사람!!</h5>
                             <p class="card-text">3학년 캡스톤디자인 CRUD 같이 공부하실 분 구해봐요</p>
 
-                            <a href="#" class="btn btn-primary">참여하기</a>
+                            <a href="#" class="btn btn--sub btn--lg">참여하기</a>
 
 
                     </div>
@@ -115,7 +87,7 @@
                     <div style="height:100%; display:flex; flex-direction: column; justify-content:space-between;" class="card-body">
                         <h5 class="card-title">같이 자료구조 스터디 하실 분</h5>
                         <p class="card-text">자료구조 너무 어렵네요.. 백엔드 단에서 설명 가능하신 분</p>
-                        <a href="#" class="btn btn-primary">참여하기</a>
+                        <a href="#" class="btn btn--sub btn--lg">참여하기</a>
                     </div>
                 </div>
                 <div style="width:20%" class="card d-none d-md-block">
