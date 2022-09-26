@@ -60,17 +60,28 @@ public class TestData {
         classRoomRepository.save(classRoom2);
         classRoomRepository.save(classRoom3);
 
+        Student testStudent = new Student("테스트","testStudent@naver.com","1234","테스팅닉네임",1, "backEnd");
+        studentRepository.save(testStudent);
+
+        Book testBook2 = new Book(LocalTime.of(9,00,00), LocalTime.of(10,30,00), LocalDate.of(2022,9,16), false, classRoom);
+        testBook2.addStudent(testStudent);
+        bookRepository.save(testBook2);
+
+        testStudent.addBook(testBook2);
+
+
         for(int i = 1; i <= 5; i++) {
             Book testBook = new Book(LocalTime.of(9+(i*2),00,00), LocalTime.of(10+(i*2),30,00), LocalDate.of(2022,9,16), false, classRoom);
             bookRepository.save(testBook);
         }
+
+
         for(int i = 1; i <= 10; i++) {
             Student student = new Student("홍길동"+i,"test"+i+"@naver.com","1234","홍길이"+i,(i%4 + 1), "designer");
             studentRepository.save(student);
         }
 
-        Student testStudent = new Student("테스트","testStudent@naver.com","1234","테스팅닉네임",1, "backEnd");
-        studentRepository.save(testStudent);
+
         Student student = new Student("강감찬","test@naver.com","5678","감찬이",3, "frontEnd");
         studentRepository.save(student);
         Board board = new Board("코딩 같이할 사람!!","3학년 캡스톤디자인 CRUD 같이 공부하실 분 구해봐요",false, student);
