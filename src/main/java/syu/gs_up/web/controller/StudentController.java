@@ -4,12 +4,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import syu.gs_up.web.controller.building.form.StudentForm;
 import syu.gs_up.web.domain.college.EmailAuth;
 import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.dto.student.StudentBook;
+import syu.gs_up.web.global.ex.SessionEmptyEx;
 import syu.gs_up.web.service.building.StudentService;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
@@ -59,7 +63,6 @@ public class StudentController {
 
     }
 
-
     //TODO 이름, 이메일, 비밀번호, 닉네임, 포지션, 학년 필드로 변경하기!!
     //TODO join.html에 현재 학년 태그가 없습니다. 추가 부탁드립니다.
     //  AJAX 작성도 해놨습니다. 거기에 따로 학년 값 받아오는거 추가해주세요.
@@ -83,5 +86,17 @@ public class StudentController {
             studentService.join(student);
             return ResponseEntity.ok().body("가입되었습니다.");
         }
+    }
+
+
+    @GetMapping("/my-page")
+    public String myPage(Model model,@SessionAttribute(value = "user",required = false) Student student) {
+        if(Objects.isNull(student)){
+            throw new SessionEmptyEx();
+        }
+
+        StudentBook studentBook = studentService.getStudentDataWithBookInfo(student.getStudentId());
+        model.addAttribute("student",studentBook);
+        return "/member/account";
     }
 }

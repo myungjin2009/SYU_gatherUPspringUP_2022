@@ -23,4 +23,12 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("select count(s.studentId) > 0 from Student s " +
             "where s.email = :email")
     boolean existsByEmail(@Param("email") String email);
+
+    @Query("select s " +
+            "from Student s " +
+            "left join fetch s.book b " +
+            "left join fetch b.classRoom c " +
+            "left join fetch c.building bd " +
+            "where s.studentId = :sId")
+    Optional<Student> getAllRelations(@Param("sId") Long studentId);
 }

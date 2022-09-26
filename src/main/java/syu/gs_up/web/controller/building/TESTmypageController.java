@@ -9,6 +9,6 @@ public class TESTmypageController {
 
     @GetMapping("/myPage2")
     public String TESTmypage() {
-        return "member/MyPage2";
+        return "/member/Mypage2";
     }
 }

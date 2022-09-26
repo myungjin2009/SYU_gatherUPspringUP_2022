@@ -31,4 +31,9 @@ public class BookService {
         }
 
     }
+
+    @Transactional
+    public void cancelBook(Long bookId) {
+        bookRepository.deleteById(bookId);
+    }
 }

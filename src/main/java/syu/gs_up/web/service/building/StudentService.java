@@ -4,13 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import syu.gs_up.web.domain.college.EmailAuth;
-import syu.gs_up.web.domain.college.Student;
+import syu.gs_up.web.domain.college.*;
 import syu.gs_up.web.dto.student.LoginForm;
+import syu.gs_up.web.dto.student.StudentBook;
 import syu.gs_up.web.repository.EmailAuthRepository;
 import syu.gs_up.web.repository.student.StudentRepository;
 import syu.gs_up.web.service.MailService;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -41,8 +42,7 @@ public class StudentService {
     }
 
     public Optional<EmailAuth> verifyNumber(EmailAuth emailAuth) {
-        Optional<EmailAuth> result = emailAuthRepository.findEmailAndAuthNumber(emailAuth.getAuthEmail(), emailAuth.getAuthNumber());
-        return result;
+        return emailAuthRepository.findEmailAndAuthNumber(emailAuth.getAuthEmail(), emailAuth.getAuthNumber());
     }
 
     @Transactional
@@ -51,11 +51,36 @@ public class StudentService {
     }
 
     public Optional<Student> login(LoginForm form) {
-        Optional<Student> byEmail = studentRepository.findUserID(form.getId(),form.getPw());
-        return byEmail;
+        return studentRepository.findUserID(form.getId(),form.getPw());
     }
 
     public boolean isDuplicateEmail(String email) {
         return studentRepository.existsByEmail(email);
+    }
+
+    public StudentBook getStudentDataWithBookInfo(Long studentId) {
+        //TODO Student - BOOk - ClassRoom - building
+        Optional<Student> allRealtions = studentRepository.getAllRelations(studentId);
+        Student student = allRealtions.orElseThrow();
+
+
+
+        StudentBook studentBook = StudentBook.builder()
+                .nickname(student.getNickName())
+                .grade(student.getGrade())
+                .position(student.getPosition())
+                .build();
+
+        if(Objects.nonNull(student.getBook())){
+            Book bookData = student.getBook();
+            ClassRoom classRoom = bookData.getClassRoom();
+            studentBook.setId(bookData.getBookId());
+            studentBook.setBookStart(bookData.getBookStartTime());
+            studentBook.setBookEndTime(bookData.getBookEndTime());
+            studentBook.setClassRoomName(classRoom.getName());
+            studentBook.setBuildingName(classRoom.getBuilding().getName());
+        }
+
+        return studentBook;
     }
 }
