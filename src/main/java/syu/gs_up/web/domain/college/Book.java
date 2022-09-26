@@ -38,7 +38,7 @@ public class Book extends Base {
     @JoinColumn(name = "class_room_id",nullable = false)
     private ClassRoom classRoom;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private Student student;
 
@@ -55,6 +55,10 @@ public class Book extends Base {
         this.bookStartTime = bookStartTime;
         this.bookDay = bookDay;
         this.classRoom = classRoom;
+        this.student = student;
+    }
+
+    public void addStudent(Student student){
         this.student = student;
     }
 }
