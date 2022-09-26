@@ -88,7 +88,6 @@ public class StudentController {
         }
     }
 
-
     @GetMapping("/my-page")
     public String myPage(Model model,@SessionAttribute(value = "user",required = false) Student student) {
         if(Objects.isNull(student)){
