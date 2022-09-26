@@ -13,6 +13,7 @@ import syu.gs_up.web.dto.student.StudentBook;
 import syu.gs_up.web.global.ex.SessionEmptyEx;
 import syu.gs_up.web.service.building.StudentService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -34,6 +35,11 @@ public class StudentController {
     @GetMapping("/login")
     public String login(){
         return "login/Login";
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request){
+        return "";
     }
 
     @ResponseBody
@@ -87,7 +93,6 @@ public class StudentController {
             return ResponseEntity.ok().body("가입되었습니다.");
         }
     }
-
     @GetMapping("/my-page")
     public String myPage(Model model,@SessionAttribute(value = "user",required = false) Student student) {
         if(Objects.isNull(student)){
@@ -98,4 +103,9 @@ public class StudentController {
         model.addAttribute("student",studentBook);
         return "/member/account";
     }
+
+
+//            HttpSession session = request.getSession(false);
+//        session.removeAttribute("user");
+//        return "redirect:/";
 }

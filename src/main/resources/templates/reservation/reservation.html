@@ -31,7 +31,7 @@
                 <input id="buildingId" name="buildingId" style="display:none" th:value="${buildingId}">
                 <input id="time" name="time" style="display:none" th:value="${num}">
                 <input id="classRoom" name="classRoom" style="display:none" th:value="${m.name}">
-                <button type="button" class="btn btn-primary btn-sm" th:onclick="reserve()">예약하기</button>
+                <button type="button" class="btn btn-primary btn-sm" th:onclick="reserve([[${buildingId}]],[[${num}]],[[${m.name}]])">예약하기</button>
               </form>
 
               <th:block th:each="n : ${bookList}">

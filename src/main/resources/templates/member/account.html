@@ -18,28 +18,20 @@
 </head>
 
 <body>
-<!--<nav th:replace="main/nav::navbar"></nav>-->
-<!--  <header class="header">-->
-<!--    <div class="container container&#45;&#45;narrow">-->
-<!--      <a href="/" class="header__logo">-->
-<!--        <img src="images/logo.svg" alt="DevSearch Logo" />-->
-<!--      </a>-->
-<!--      <nav class="header__nav">-->
-<!--        <input type="checkbox" id="responsive-menu" />-->
-<!--        <label for="responsive-menu" class="toggle-menu">-->
-<!--          <span>Menu</span>-->
-<!--          <div class="toggle-menu__lines"></div>-->
-<!--        </label>-->
-<!--        <ul class="header__menu">-->
-<!--          <li class="header__menuItem"><a href="index.html">Developers</a></li>-->
-<!--          <li class="header__menuItem"><a href="projects.html">Projects</a></li>-->
-<!--          <li class="header__menuItem"><a href="inbox.html">Inbox</a></li>-->
-<!--          <li class="header__menuItem"><a href="account.html">My Account</a></li>-->
-<!--          <li class="header__menuItem"><a href="login.html" class="btn btn&#45;&#45;sub">Login/Sign Up</a></li>-->
-<!--        </ul>-->
-<!--      </nav>-->
-<!--    </div>-->
-<!--  </header>-->
+<nav class="navbar navbar-dark bg-primary" style="padding-top:0; padding-bottom:0.5;" th:fragment="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="https://cdn.discordapp.com/attachments/855247460909711370/1022922100094279740/SKILL_-_UP.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong>Gather_up</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</nav>
 
   <!-- Main Section -->
   <main class="settingsPage profile my-md">

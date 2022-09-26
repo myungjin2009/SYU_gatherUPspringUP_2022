@@ -1,14 +1,28 @@
-function reserve() {
+function requestReserve(requestObject) {
+    const requestUrl = "/building/reservation";
+
+    $.ajax({
+        type: 'post',
+        url: requestUrl,
+        contentType: 'application/json',
+        data: JSON.stringify(requestObject),
+        async: false,
+        success: function (result) {
+            alert(result);
+            window.location.replace(`/buildings/${result}`);
+        }, error: function (error) {
+            alert(error.responseText);
+        }
+    })
+}
+
+function reserve(buildingId, start_time, classRoom) {
     const requestUrl = '/building/reservationCheck';
 
-//                  <input id="buildingId" name="buildingId" style="display:none" th:value="${buildingId}">
-//                 <input id="time" name="time" style="display:none" th:value="${num}">
-//                 <input id="classRoom" name="classRoom" style="display:none" th:value="${m.name}">
-
     let requestObject = {};
-    requestObject.buildingId = $('#buildingId').val();
-    requestObject.start_time = $('#time').val(); //10:00
-    requestObject.classRoom = $('#classRoom').val();
+    requestObject.buildingId = buildingId;
+    requestObject.start_time = start_time;
+    requestObject.classRoom = classRoom;
     alert(JSON.stringify(requestObject));
 
     $.ajax({
@@ -18,7 +32,7 @@ function reserve() {
         data: JSON.stringify(requestObject),
         async: false,
         success: function (result) {
-
+            requestReserve(requestObject);
         }, error: function (error) {
             alert(error.responseText);
         }

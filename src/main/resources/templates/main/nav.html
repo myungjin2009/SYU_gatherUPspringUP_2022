@@ -19,7 +19,9 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" style="color:black;">로그인</a>
+            <a class="nav-link active" th:if="${session.user == null}" aria-current="page" href="#" style="color:black;">로그인</a>
+            <form method="post" th:action="@{/logout}"><a type="submit" class="nav-link active" th:if="${session.user != null}" aria-current="page"  th:href="@{/logout}" style="color:black;">
+              로그아웃</a></form>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/join" style="color:black;">회원가입</a>

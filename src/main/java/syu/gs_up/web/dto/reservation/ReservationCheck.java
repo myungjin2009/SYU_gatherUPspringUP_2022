@@ -12,7 +12,6 @@ import java.time.LocalTime;
 public class ReservationCheck {
 
     private Long buildingId;
-
     private LocalTime start_time;
 
     private String classRoom;
