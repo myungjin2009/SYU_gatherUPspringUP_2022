@@ -14,6 +14,7 @@ import syu.gs_up.web.global.ex.SessionEmptyEx;
 import syu.gs_up.web.service.building.StudentService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -37,9 +38,11 @@ public class StudentController {
         return "login/Login";
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logout(HttpServletRequest request){
-        return "";
+        HttpSession session = request.getSession(false);
+        session.removeAttribute("user");
+        return "redirect:/";
     }
 
     @ResponseBody
@@ -103,9 +106,4 @@ public class StudentController {
         model.addAttribute("student",studentBook);
         return "/member/account";
     }
-
-
-//            HttpSession session = request.getSession(false);
-//        session.removeAttribute("user");
-//        return "redirect:/";
 }
