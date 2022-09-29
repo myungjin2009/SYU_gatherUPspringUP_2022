@@ -22,6 +22,5 @@
 ![BoardView](resources/images/BoardView.PNG)
 ![myPage](resources/images/myPage.PNG)
 
-
 ## 프로젝트 실행방법
  - /resources/help 폴더에 적어놓았음.
