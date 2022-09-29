@@ -1,0 +1,18 @@
+0. 사전 준비물 : MySQL8.0 + gsdb 스키마 생성 , JDK 17.0.4.1 LTS , IntelliJ standard
+
+1. Git clone으로 프로젝트 폴더(SYU_gatherUPspringUP_2022)를 자신의 컴퓨터에 다운로드 받는다.
+2. IntelliJ 실행 후 (SYU_gatherUPspringUP_2022)프로젝트를 열어서 빌트가 완료될 때까지 잠시 기다린다.
+3. SYU_gatherUPspringUP_2022\src\main\resources 폴더로 이동, application-secret.yml 파일을 열기.
+4. MySQL 계정, 구글 smtp 계정, 카카오API JavaScript 키 등을 모두 입력한다.
+5. IntelliJ를 실행, SYU_gatherUPspringUP_2022\src\main\java\syu\gs_up 폴더로 이동, GsUpApplication 파일을 열기.
+6. 초록색 재생 버튼(Run GsUpApplication)을 눌러 프로젝트를 실행한다.
+7. 웹 브라우저 주소창에 localhost:8080을 입력 후 들어간다.
+
+
+Q1. 웹브라우저로 접속이 안됨. & 오류 발생
+  -> IntelliJ 콘솔창에 뜨는 오류를 캐치해서 확인 후 해결한다.
+  -> IntelliJ 어노테이션 프로세싱을 허용해주어야 한다. (방법 구글검색)
+
+Q2. 접속은 되는데 지도가 안뜸.
+  -> 카카오 Developer 허용 서버IP 주소를 등록해야 한다.(127.0.0.1) 이 부분을 확인한다. https://developers.kakao.com/console/app/793808/advanced/allowedIp
+  -> SYU_gatherUPspringUP_2022\src\main\resources\templates\main\home.html에도 카카오 API키 주소를 입력해야 하는 부분이 있다. 확인
