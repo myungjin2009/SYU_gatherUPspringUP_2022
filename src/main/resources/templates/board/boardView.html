@@ -70,7 +70,7 @@
     <div style="text-align:right">
       <th:block th:if="${sessions != null}">
         <form method="post" action="/boardView/writeComment">
-        <textarea type="text" name="comments" style="width: 100%; height: 90px; padding: 8px; border: solid gray 3px;"
+        <textarea type="text" name="comments" style="width: 100%; height: 90px; padding: 8px; border: solid gray 3px;" maxlength='38'
                   placeholder="덧글을 입력해주세요..."></textarea>
           <input type="text" style="display:none" name="uid" th:value="${board.postId}">
           <button type="submit" class="btn btn-outline-primary" style="margin-top: 7px; width: 80px; height: 40px; border-radius: 8px">등록</button>

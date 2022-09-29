@@ -8,10 +8,9 @@ function requestReserve(requestObject) {
         data: JSON.stringify(requestObject),
         async: false,
         success: function (result) {
-            alert(result);
             window.location.replace(`/buildings/${result}`);
         }, error: function (error) {
-            alert(error.responseText);
+            //alert(error.responseText);
         }
     })
 }
@@ -23,7 +22,6 @@ function reserve(buildingId, start_time, classRoom) {
     requestObject.buildingId = buildingId;
     requestObject.start_time = start_time;
     requestObject.classRoom = classRoom;
-    alert(JSON.stringify(requestObject));
 
     $.ajax({
         type: 'post',

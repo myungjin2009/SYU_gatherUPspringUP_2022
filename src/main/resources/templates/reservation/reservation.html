@@ -36,7 +36,7 @@
 
               <th:block th:each="n : ${bookList}">
                 <th:block th:if="${m.name == n.classRoom.name} and ${#strings.toString(num) == #strings.substring(n.bookStartTime,0,2)}">
-                  <button type="button" style="margin-top: -58px;" class="btn btn-danger btn-sm">예약불가</button>
+                  <button type="button" style="height: 33px; margin-top: -58px;" class="btn btn-danger btn-sm">예약불가</button>
                 </th:block>
               </th:block>
             </td>
