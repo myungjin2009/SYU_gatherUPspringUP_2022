@@ -13,14 +13,15 @@
 기존의 빈 강의실을 사용하기 위해서 수강 편람을 확인하고 조교한테 문의를 해야하는 복잡한 절차를 모두 대체하고, 학생들은 우리 웹페이지를 통하여 쉽고 편하게 빈 강의실을 사용할 수 있다.
 
 ## 실행 화면
-![Login](resources/images/Login.PNG)
-![Join](resources/images/Join.PNG)
-![findIDPW](resources/images/findIDPW.PNG)
-![main](resources/images/main.PNG)
-![Reservation](resources/images/Reservation.PNG)
-![BoardList](resources/images/BoardList.PNG)
-![BoardView](resources/images/BoardView.PNG)
-![myPage](resources/images/myPage.PNG)
+![Login](images/Login.PNG)
+![Join](images/Join.PNG)
+![findIDPW](images/findIDPW.PNG)
+![main](images/main.PNG)
+![Reservation](images/Reservation.PNG)
+![BoardList](images/BoardList.PNG)
+![BoardView](images/BoardView.PNG)
+![myPage](images/myPage.PNG)
+
 
 ## 프로젝트 실행방법
  - /resources/help 폴더에 적어놓았음.
