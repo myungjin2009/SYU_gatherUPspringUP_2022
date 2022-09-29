@@ -22,5 +22,8 @@
 ![BoardView](resources/images/BoardView.png)
 ![myPage](resources/images/myPage.png)
 
+
+>>>>>>> c8d26e81d8eb28636c4ccc41ca0f2d860595dcd4
+
 ## 프로젝트 실행방법
  - /resources/help 폴더에 적어놓았음.
